@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 
-import * as util from '../../util'
+import * as util from '../../util';
 
 export function countVowels(line: string): number {
     const vowels = ['a', 'i', 'u', 'e', 'o'];

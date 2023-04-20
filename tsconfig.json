@@ -1,14 +1,10 @@
 {
     "extends": "@tsconfig/recommended/tsconfig.json",
     "compilerOptions": {
-        "strict": true,
-        "noImplicitAny": true
+        "strict": true
     },
     "include": [
         "src/**/*.ts",
         "test/**/*.spec.ts"
-    ],
-    "exclude": [
-        "node_modules"
     ]
 }
