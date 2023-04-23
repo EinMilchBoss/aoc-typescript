@@ -36,13 +36,30 @@ suite('2015-05-main', () => {
         assert(uut.includesSome('abcde', ['abcde', 'bc', 'de']));
     });
 
-    test('solveFirst', () => {
-        assert.deepEqual(uut.solveFirst(example), 2);
+    test('containsCharPairTwice', () => {
+        assert(uut.containsCharPairTwice('xyxy'));
+        assert(uut.containsCharPairTwice('aabcdefgaa'));
+        assert(!uut.containsCharPairTwice('aaa'));
+    });
 
-        assert(true);
+    test('containsRepeatingCharWithSeparatorChar', () => {
+        assert(uut.containsRepeatingCharWithSeparatorChar('xyx'));
+        assert(uut.containsRepeatingCharWithSeparatorChar('abcdefeghi'));
+        assert(uut.containsRepeatingCharWithSeparatorChar('aaa'));
+    });
+
+    test('solveFirst', () => {
+        assert.deepStrictEqual(uut.solveFirst('ugknbfddgicrmopn'), 1);
+        assert.deepStrictEqual(uut.solveFirst('aaa'), 1);
+        assert.deepStrictEqual(uut.solveFirst('jchzalrnumimnmhp'), 0);
+        assert.deepStrictEqual(uut.solveFirst('haegwjzuvuyypxyu'), 0);
+        assert.deepStrictEqual(uut.solveFirst('dvszwmarrgswjxmb'), 0);
     });
 
     test('solveSecond', () => {
-        assert(true);
+        assert.deepStrictEqual(uut.solveSecond('qjhvhtzxzqqjkmpb'), 1);
+        assert.deepStrictEqual(uut.solveSecond('xxyxx'), 1);
+        assert.deepStrictEqual(uut.solveSecond('uurcxstgmygtbstg'), 0);
+        assert.deepStrictEqual(uut.solveSecond('ieodomkazucvgmuy'), 0);
     });
 });

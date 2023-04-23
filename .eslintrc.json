@@ -21,6 +21,7 @@
 				"caughtErrorsIgnorePattern": "^_",
 				"destructuredArrayIgnorePattern": "^_"
 			}
-		]
+		],
+		"curly": ["error", "all"]
 	}
 }

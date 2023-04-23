@@ -27,6 +27,35 @@ export function includesSome(line: string, parts: string[]): boolean {
     return parts.some((part) => line.includes(part));
 }
 
+export function containsCharPairTwice(line: string): boolean {
+    const pairSize = 2;
+
+    const charPairsToLastIndexOfPair: Map<string, number> = new Map();
+    for (let i = 0; i <= line.length - pairSize; ++i) {
+        const charPair = line.slice(i, i + pairSize);
+
+        if (
+            charPairsToLastIndexOfPair.has(charPair) &&
+            charPairsToLastIndexOfPair.get(charPair) !== i
+        ) {
+            return true;
+        }
+        charPairsToLastIndexOfPair.set(charPair, i + 1);
+    }
+    return false;
+}
+
+export function containsRepeatingCharWithSeparatorChar(line: string): boolean {
+    const windowSize = 3;
+    for (let i = 0; i <= line.length - windowSize; ++i) {
+        const window = line.slice(i, i + windowSize);
+        if (window[0] === window[2]) {
+            return true;
+        }
+    }
+    return false;
+}
+
 export function solveFirst(input: string): number {
     const naughtyParts = ['ab', 'cd', 'pq', 'xy'];
 
@@ -44,8 +73,18 @@ export function solveFirst(input: string): number {
     return niceStringCount;
 }
 
-export function solveSecond(_: string): number {
-    return 0;
+export function solveSecond(input: string): number {
+    let niceStringCount = 0;
+    input.split('\n').forEach((line) => {
+        if (
+            containsCharPairTwice(line) &&
+            containsRepeatingCharWithSeparatorChar(line)
+        ) {
+            ++niceStringCount;
+        }
+    });
+
+    return niceStringCount;
 }
 
 function main() {
